@@ -1,21 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Weather  from './src/components/Weather';
+import { DefaultTheme,Provider as PaperProvider } from 'react-native-paper';
+import Covid from './src/components/Covid';
+import Header from "./src/components/Header"
+import Vaccine from "./src/components/Vaccine"
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3498db',
+    accent: '#f1c40f',
+  }
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider theme={theme}>
+      <Header />
+      <Vaccine />
+    </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
