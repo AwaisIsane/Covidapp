@@ -35,22 +35,25 @@ const Apppge = ({page,stats,vaccine}) => {
 
 export default function App() {
   const [page,setPage] = useState("Home")
-
+  const [dis,setDis] = useState(true)
   const onStats = () => {
     setPage("Stats")
+    setDis(false)
   }
 
   const onVaccine = () => {
+    setDis(false)
     setPage("Vaccine")
   }
 
   const goBack = () => {
+    setDis(true)
     setPage("Home")
   }
 
   return (
     <PaperProvider theme={theme}>
-      <Header goBack={goBack}/>
+      <Header goBack={goBack} dis={dis}/>
       <Apppge page={page} stats={onStats}  vaccine={onVaccine}/>
     </PaperProvider>
   );
