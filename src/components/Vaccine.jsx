@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {View, Platform} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Button,TextInput,Text, DataTable } from 'react-native-paper';
 import Entries from './Entries'
+import personService from '../../services/persons';
+
 
 const Vacinetbl = ({members}) => {
   if (members.length === 0) {
@@ -28,6 +30,12 @@ const Vaccine = () => {
   const [name,setName] = useState("");
   const [members,setMembers] = useState([]);
 
+ /* useEffect(() => {
+    personService
+      .getAll()
+      .then(nwperson => setMembers(nwperson))
+    },[]);*/
+
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
@@ -51,6 +59,8 @@ const Vaccine = () => {
     setMembers([...members,{name:name,dose1:date,dose2:dose2}])
     setName("")
     setDate(new Date())
+    const personObj = {name:name,number:date.toLocaleString()};
+    personService.create(personObj)
   }
 
   return (
