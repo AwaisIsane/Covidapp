@@ -6,6 +6,7 @@ import Covid from './src/components/Covid';
 import Header from "./src/components/Header"
 import Vaccine from "./src/components/Vaccine"
 import Home from "./src/components/Home"
+import Doseavailable from './src/components/Doseavailale';
 
 const theme = {
   ...DefaultTheme,
@@ -19,8 +20,8 @@ const theme = {
 const Apppge = ({page,stats,vaccine}) => {
   if(page==="Stats") {
     return (
-      <Covid />
-    ) }
+      <Doseavailable />
+      ) }
   else if(page==="Vaccine") {
     return (
       <Vaccine />
