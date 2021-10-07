@@ -6,7 +6,6 @@ import Covid from './src/components/Covid';
 import Header from "./src/components/Header"
 import Vaccine from "./src/components/Vaccine"
 import Home from "./src/components/Home"
-import Welcome from './src/components/Welcome';
 
 const theme = {
   ...DefaultTheme,

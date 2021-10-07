@@ -2,9 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Alert } from 'react-native';
 import * as Location from 'expo-location';
 
-const Welcome = () => {
+const Infobox = ({dcentre}) => {
+  return (
+    <View>
+      <Text>{dcentre.name}</Text>
+      <Text>{dcentre.address}</Text>
+      <Text>{dcentre.vaccine}</Text>
+      <Text>{dcentre.available_capacity_dose1}</Text>
+      <Text>{dcentre.available_capacity_dose2}</Text>
+      <Text>{dcentre.fee}</Text>
+    </View>
+  )
+}
+
+const Doseavailable = () => {
+
+  const [slots,setSlots] = useState([{
+    
+  }])
   const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
-  const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
+  const [pincode, setPincode] = useState(
     'Wait, we are fetching you location...'
   );
 
@@ -35,9 +52,9 @@ const Welcome = () => {
     });
 
     for (let item of response) {
-      let address = `${item.name}, ${item.street}, ${item.postalCode}, ${item.city}`;
+      let address = `${item.postalCode}`;
 
-      setDisplayCurrentAddress(address);
+      setPincode(address)
     }
   }
 };
@@ -57,16 +74,15 @@ const Welcome = () => {
     }
   };
 
+
+
   return (
     <View >
-      <View >
-        <Text >What's your address?</Text>
-      </View>
-      <Text >{displayCurrentAddress}</Text>
+      {}
     </View>
   );
 };
 
 // styles remain same
 
-export default Welcome;
+export default Doseavailable;

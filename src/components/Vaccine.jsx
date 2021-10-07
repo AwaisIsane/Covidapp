@@ -30,11 +30,18 @@ const Vaccine = () => {
   const [name,setName] = useState("");
   const [members,setMembers] = useState([]);
 
- /* useEffect(() => {
+  useEffect(() => {
     personService
       .getAll()
-      .then(nwperson => setMembers(nwperson))
-    },[]);*/
+      .then(nwperson => {
+        const smem = nwperson.map(e => {
+        const dose2 = new Date()
+        const dose1 = new Date(e.number)
+        dose2.setDate(dose1.getDate()+10)
+        return {name:e.name,dose1:dose1,dose2:dose2}
+        })
+        setMembers(smem)})
+    },[]);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
