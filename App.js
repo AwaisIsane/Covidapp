@@ -7,6 +7,7 @@ import Header from "./src/components/Header"
 import Vaccine from "./src/components/Vaccine"
 import Home from "./src/components/Home"
 import Doseavailable from './src/components/Doseavailale';
+import { Chat } from './src/components/Chat';
 
 const theme = {
   ...DefaultTheme,
@@ -27,6 +28,11 @@ const Apppge = ({page,stats,vaccine}) => {
       <Vaccine />
     )
   }
+  else if(page==="Chat") {
+    return (
+      <Chat />
+    )
+  }
   else if(page==="Home") {
     return (
       <Home stats={stats} vaccine={vaccine}/>
@@ -35,7 +41,7 @@ const Apppge = ({page,stats,vaccine}) => {
 }
 
 export default function App() {
-  const [page,setPage] = useState("Home")
+  const [page,setPage] = useState("Chat")
   const [dis,setDis] = useState(true)
   const onStats = () => {
     setPage("Stats")
