@@ -4,6 +4,30 @@ import * as Location from 'expo-location';
 import cowinService from '../../services/cowin';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Button,TextInput, DataTable } from 'react-native-paper';
+/*import { StyleSheet, Text, View, Image, Alert, ScrollView, ToastAndroid } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    backgroundColor: '#dfff',
+    paddingHorizontal:20
+  },
+  item: {
+    marginTop:12,
+    backgroundColor:'#fdff',
+    fontSize:20,
+    flex:1,
+    padding:10
+  },
+  but: {
+    marginTop:12,
+    color:'#ffff',
+    backgroundColor:'#ffaf'
+
+  }
+})
+*/
+
 
 const Infobox = ({dcentre}) => {
   return (

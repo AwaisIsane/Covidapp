@@ -5,6 +5,7 @@ const baseURL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/fi
 const getSlotstatus = (pin,date) => {
     console.log("pin",pin,"dates",date)
     const promise = axios.get(baseURL,{params:{pincode:pin,date:date}})
+  //  console.log(pro)
     return promise.then(res => res.data.sessions)
 
 }

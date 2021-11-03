@@ -18,7 +18,7 @@ const theme = {
     accent: '#f1c40f',
   }
 }
-const Apppge = ({page,stats,vaccine}) => {
+const Apppge = ({page,stats,vaccine,chat}) => {
   if(page==="Stats") {
     return (
       <Doseavailable />
@@ -35,13 +35,13 @@ const Apppge = ({page,stats,vaccine}) => {
   }
   else if(page==="Home") {
     return (
-      <Home stats={stats} vaccine={vaccine}/>
+      <Home stats={stats} vaccine={vaccine} chat={chat}/>
     )
   }
 }
 
 export default function App() {
-  const [page,setPage] = useState("Chat")
+  const [page,setPage] = useState("Home")
   const [dis,setDis] = useState(true)
   const onStats = () => {
     setPage("Stats")
@@ -58,10 +58,15 @@ export default function App() {
     setPage("Home")
   }
 
+  const onChat = () => {
+    setPage("Chat")
+    setDis(false)
+  }
+
   return (
     <PaperProvider theme={theme}>
       <Header goBack={goBack} dis={dis}/>
-      <Apppge page={page} stats={onStats}  vaccine={onVaccine}/>
+      <Apppge page={page} stats={onStats}  vaccine={onVaccine} chat={onChat}/>
     </PaperProvider>
   );
 }

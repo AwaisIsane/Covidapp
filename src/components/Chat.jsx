@@ -1,9 +1,11 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
+import fileService  from '../../services/files'
 
 export function Chat() {
   const [messages, setMessages] = useState([]);
   let count = useRef(1)
+  let flag = useRef(1)
   useEffect(() => 
   { 
     setMessages([
@@ -20,8 +22,12 @@ export function Chat() {
     ])
   }, [])
 
-
+  const takeNotes = () => {
+    console.log("heere1")
+    fileService.writehello()
+}
     if (count.current===messages.length) {
+        takeNotes()
         const ma2 =  {
             _id:count.current+1,
             text: "hi",
@@ -34,6 +40,21 @@ export function Chat() {
         }
         let txt = "Sorry I didn't get you"
         console.log(messages)
+ //       if(flag.current===2) {
+  //        txt="notes saved in device"
+   //       flag.current = 1
+    //      fileService.writehello(messages[0].text).then(setMessages([{...ma2,text:txt},...messages]))
+
+     //   }
+     /*
+        else if (messages[0].text==="take notes") {
+          txt = "taking notes"
+          flag.current = 2
+        }
+        else if (message[0].text==="view notes") {
+          txt = "notes are logged"
+          flag.current = 1
+        }*/
         switch(messages[0].text) {
             case "hi": txt = "Hi this is a covid app created";setMessages([{...ma2,text:txt},...messages]);break;
             case "take notes": txt = "functionality to be implemented";setMessages([{...ma2,text:txt},...messages]);break;
@@ -46,9 +67,7 @@ export function Chat() {
 
 
     }
-  const takeNotes = () => {
 
-  }
   const onSend = useCallback((messages = []) => {
     
     setMessages((previousMessages => GiftedChat.append(previousMessages, messages)))
